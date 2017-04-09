@@ -1,5 +1,11 @@
  var express = require('express')
  var app = express()
+ var router = express.Router()
+
+ var birds = require('./router/index.js');
+ var fs =  require('fs')
+ var readable = fs.createReadStream('./public/index.html')
+ app.use(express.static('public'))
  // var mongoose = require('mongoose');
 //   var db = mongoose.connect('mongodb://localhost/part9');
 //
@@ -43,10 +49,28 @@
 // });
 
  app.get('/',function(req,res){
-   res.send('hello,express')
-
+   //res.send('hello word')
+    //readable.pipe(res)
+    res.sendFile('./public/index.html')
  })
 
+//  app.use('/api',function(req,res,next){
+//  	//res.send('api+1')
+//  	// console.log('1')
+//   //      router.get('/login',function(request,response){
+//   //      	console.log('2')
+//   //      	response.send('login success')
+//   //      })
+// router.use(function timeLog(req, res, next) {
+//   console.log('Time: ', Date.now());
+//   next();
+// });
+
+
+//console.log(birds)
+
+//  })
+//app.use('/birds', birds);
 app.listen(5000)
 // var express = require('express');
 // var app = express();
