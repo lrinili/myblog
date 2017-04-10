@@ -70,7 +70,10 @@
 //console.log(birds)
 
 //  })
-//app.use('/birds', birds);
+app.use('/birds', birds);
+app.use('/birds/login', function(req,res){
+  res.send('这是第二张')
+});
 app.listen(5000)
 // var express = require('express');
 // var app = express();
