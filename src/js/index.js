@@ -1,0 +1,9 @@
+$('.btn').click(function(){
+	$.post('http://127.0.0.1:3009/api/login',{
+	   username:$('#Email').val(),
+	   password:$('#Password').val(),
+	   remember:$('#remember').val()
+	},function(data){
+	console.log('data',data)
+	})
+})

@@ -6,6 +6,8 @@ var router  = express.Router();
 //   next()
 // })
 
-router.get('/login',function(req,res){
-  res.send('login')
+router.post('/login',function(req,res){
+  console.log('req',req)
+  res.send('dadad')
 })
+module.exports=router
