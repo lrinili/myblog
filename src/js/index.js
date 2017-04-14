@@ -1,4 +1,4 @@
-$('.btn').click(function(){
+$('#btnLogin').click(function(){
 	$.post('http://127.0.0.1:3009/api/login',{
 	   username:$('#Email').val(),
 	   password:$('#Password').val(),
