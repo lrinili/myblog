@@ -3,8 +3,11 @@ var express = require('express')
 var app = express()
 //var router = express.Router()
 var routers = require('./routers/index.js')
+var bodyParser = require('body-parser')
 app.use(express.static('../'))
 
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 app.all("*",(req,res,next)=>{
   res.header("Access-Control-Allow-Origin", "*");
   res.header('Access-Control-Allow-Headers', 'Content-Type, Content-Length, Authorization, Accept, X-Requested-With');
@@ -14,7 +17,7 @@ app.all("*",(req,res,next)=>{
 
 
 app.get('/',function(req,res){
-  console.log('当前文件夹',process.pwd())
+  //console.log('当前文件夹',process.pwd())
   res.sendFile('../index.html')
 })
   routers(app)
