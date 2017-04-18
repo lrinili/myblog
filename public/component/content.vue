@@ -6,7 +6,6 @@
 </template>
 <script>
 import { mapState } from 'vuex'
-console.log(mapState)
    export default {
         data(){
            return{
@@ -19,7 +18,8 @@ console.log(mapState)
          }),
          methods:{
            increment(){
-            this.$store.commit('increment')
+            //this.$store.commit('increment')
+            this.$store.dispatch('increaments',10)
             //this.count = this.$store.state.count
            }
          }

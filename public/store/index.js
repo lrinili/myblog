@@ -6,10 +6,15 @@ const store = new Vuex.Store({
     count:0
   },
   mutations:{
-    increment(state){
-       store.state.count++
-      console.log('111',store.state.count)
+    increment(state,payload){
+       state.count=state.count+payload
     }
+  },
+  actions:{
+  	increaments({commit},payload){
+  		 console.log(payload)
+  		commit('increment',payload)
+  	}
   }
 })
 export default store
