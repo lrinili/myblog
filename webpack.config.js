@@ -31,5 +31,10 @@ plugins: [
 		inject: 'body'
 	}),
 	//new webpack.HotModuleReplacementPlugin()//热加载插件
-]
+],
+resolve: {
+  alias: {
+    'vue$': 'vue/dist/vue.common.js'
+  }
+}
 }
