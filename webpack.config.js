@@ -18,7 +18,10 @@ module.exports={
 		rules:[
 			{test:/\.(html|tpl)$/,use:'html-loader'},
 			{test:/\.js$/,use:'babel-loader', exclude: /node_modules/},
-			{test:/\.vue$/,use:'vue-loader'}
+			{test:/\.vue$/,use:'vue-loader'},
+			{test:/\.css$/,loader: 'style-loader!css-loader'},
+			{test:/\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/,use:'file-loader'},
+			{test:/\.(png|jpe?g|gif|svg)(\?\S*)?$/,use:'file-loader'}
 
 		]
 	},

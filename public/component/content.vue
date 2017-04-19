@@ -5,7 +5,7 @@
   </div>
 </template>
 <script>
-import { mapState } from 'vuex'
+import { mapState,mapActions } from 'vuex'
    export default {
         data(){
            return{
@@ -19,9 +19,9 @@ import { mapState } from 'vuex'
          methods:{
            increment(){
             //this.$store.commit('increment')
-            this.$store.dispatch('increaments',10)
+            this.$store.dispatch('increments')
             //this.count = this.$store.state.count
-           }
+          }
          }
      }
 
