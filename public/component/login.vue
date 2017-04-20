@@ -48,7 +48,7 @@
       methods:{
         login(){
           let vm = this
-          vm.$refs[myForm].validate((valid)=>{
+          vm.$refs.myForm.validate((valid)=>{
             if(valid){
               console.log('login')
             }else{
