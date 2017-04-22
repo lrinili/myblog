@@ -11,8 +11,15 @@ module.exports={
 	devServer:{
 		historyApiFallback:true, //不跳转
 		inline:true,
-		port:'5001'
-		 //实时刷新
+		port:'5001',
+		 proxy:{
+		 	'/api':{
+		 		tartget:'http://localhost:3009/api',
+		 		secure:false,
+		 		changeOrigin:true,
+		 		pathRewrite:{'^/api':''}
+		 	}
+		 }
 	},
 	module:{
 		rules:[

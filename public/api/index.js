@@ -1,4 +1,4 @@
-import 'axios' from 'axios'
+import axios from 'axios'
 import  base from '.././config.js'
 //创建实例
 
