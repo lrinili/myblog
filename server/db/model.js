@@ -1,16 +1,34 @@
 var mongoose = require('mongoose')
 
 var db = require('./index.js')
-
- var UserSchame = new mongoose.Schema({
-	name:String,
-	password:String,
-	remember:String
+var UserSchema = new mongoose.Schema({
+  name:{
+  	type:String,
+  	default:'new name',
+  	trim:true,
+  	set:function(name){
+  		if(!name) return 
+  		 if(0!==name.indexof('lly')){
+  		 	name = 'lly'+'new name'
+  		 }
+  		 return name 
+  	},
+  	get:function(name){
+  		if(!name) return 
+  			if(name!=='lly'){
+  				name = 'seuic'+name
+  			}else{
+  				name='seuic'
+  			}
+  			return name 
+  	}
+  },
+  age:Number,
+  login:{type:Date,default:Date.now}
 })
 
- var User =  mongoose.model('User',UserSchame)
- var user = new User({
- 	name:'李元义'
- })
+var User = mongoose.model('user',UserSchema)
 
  user.save()
+ 
+
