@@ -8,5 +8,5 @@ var UserSchame = new mongoose.Schema({
 UserSchame.methods.getUser = function(query,cb){
 	this.model('User').findOne(query,cb)
 }
-var UserModel = db.model('User',UserSchame)
+var UserModel = mongoose.model('User',UserSchame)
 module.exports=UserModel

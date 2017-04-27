@@ -6,9 +6,10 @@ var querystring = require('querystring');
 //   console.log( Date.now())
 //   next()
 // })
-var User = require('../db/user.js')
-var userEntity = new User()
-userEntity.save()
+ require('../db/user.js')
+// var userEntity = new User()
+// userEntity.save()
+var user = 
 router.post('/login',function(req,res){
    // var querName= User.find({name:'lly'})
    // var post = ''
@@ -21,16 +22,16 @@ router.post('/login',function(req,res){
    // 	console.log('after', post)
    // })
       
-      var name = req.body.username
-      console.log('请求body',name)
-  User.find({'name':name},function(err,person){
+      var name = req.body.name
+      console.log('请求body',req.body)
+     User.find({'name':name},function(err,person){
       //如果err==null，则person就能取到数据
       console.log('person',person.length)
 
      if(person.length>0){
      	res.send(person)
      }else{
-     	res.send(400,'没有此用户请注册')
+     	res.send(200,'没有此用户请注册')
      }
 
 
