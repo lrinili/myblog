@@ -12,13 +12,13 @@ export default {
   	
   	// return	new Promise((resolve,reject)=>{
   	//    api.login(obj).then((resp)=>{
-  	// 		console.log('success')
+  	// 		resolve(resp)
   	// 	})
   	// })
-
-  	api.login(obj).then((resp)=>{
-  			console.log('success')
-  		})
+ return api.login(obj)
+  	// api.login(obj).then((resp)=>{
+  	// 		console.log('success')
+  	// 	})
   	
 
   }

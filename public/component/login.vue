@@ -51,7 +51,11 @@
           vm.$refs.myForm.validate((valid)=>{
             if(valid){
               vm.$store.dispatch('login',vm.myForm).then((resp)=>{
-                console.log('login', resp)
+
+                     vm.$message({
+                 message: resp.data
+              });
+               
               })
             }else{
               return false
