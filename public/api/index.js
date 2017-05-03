@@ -9,9 +9,9 @@ const instance = axios.create({
 instance.defaults.headers.post['Content-Type'] = 'application/json' //实例请求头
 //可以设置请求头带token
 //拦截器
-instance.interceptors.request.use(function(config) {     //请求前的配置
+// instance.interceptors.request.use(function(config) {     //请求前的配置
 
-})
+// })
 instance.interceptors.response.use(function(resp){    //返回的拦截器
   return resp
 },function(err){

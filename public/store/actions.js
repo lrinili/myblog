@@ -10,9 +10,15 @@ export default {
   },
   login({commit,state},obj){
   	
-  		api.login(obj).then((resp)=>{
-  			console.log('success')
-  		})
+  	// return	new Promise((resolve,reject)=>{
+  	//    api.login(obj).then((resp)=>{
+  	// 		resolve(resp)
+  	// 	})
+  	// })
+ return api.login(obj)
+  	// api.login(obj).then((resp)=>{
+  	// 		console.log('success')
+  	// 	})
   	
 
   }
