@@ -25,7 +25,9 @@ var UserSchema = new mongoose.Schema({
   age:Number,
   login:{type:Date,default:Date.now}
 })
-
+UserSchema.virtual('fullName').get(function(){
+	return this.name+this.login
+})
 var User = mongoose.model('user',UserSchema)
 // var user = new User({
 //     name : 'T'                 //用户账号
