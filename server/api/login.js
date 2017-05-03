@@ -16,16 +16,30 @@ router.post('/login',function(req,res){
 
       var name = req.body.name
 
-     user.find({'name':name},function(err,person){
+     user.findOne({'name':name},{'password':1},function(err,person){
       //如果err==null，则person就能取到数据
+         if(err) return
 
 
-     if(person.length>0){
-     	res.send(person)
+     if(person){
+       if(person.password!==req.body.password){
+          res.send(200,{
+            result:false,
+            data:null,
+            msg:'密码错误'
+          })
+       }else{
+         res.send(200,{
+           result:true,
+           data:person,
+           msg:''
+         })
+       }
+
      }else{
-     	res.send(200,'没有此用户请注册')
+     	res.send(200,'用户未注册')
      }
-      
+
     });
 
 })
