@@ -7,6 +7,11 @@
 <script>
 import { mapState,mapActions } from 'vuex'
    export default {
+     created(){
+       let vm = this
+       vm.$store.dispatch('getIndex')
+
+     },
         data(){
            return{
              name:'lly',

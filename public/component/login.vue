@@ -51,17 +51,22 @@
           vm.$refs.myForm.validate((valid)=>{
             if(valid){
               vm.$store.dispatch('login',vm.myForm).then((resp)=>{
+                 console.log(resp)
 
-                     vm.$message({
-                 message: resp.data
-              });
-               
+              if(resp.data.result){
+                    this.$router.push({path:'index'});
+              }else{
+                vm.$message({
+                   message: resp.data
+                });
+              }
+
               })
             }else{
               return false
             }
           })
-        
+
         },
         reqiste(){
 

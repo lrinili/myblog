@@ -9,7 +9,7 @@ export default {
 
   },
   login({commit,state},obj){
-  	
+
   	// return	new Promise((resolve,reject)=>{
   	//    api.login(obj).then((resp)=>{
   	// 		resolve(resp)
@@ -19,7 +19,10 @@ export default {
   	// api.login(obj).then((resp)=>{
   	// 		console.log('success')
   	// 	})
-  	
 
+
+  },
+  getIndex({commit}){
+    return api.getIndex()
   }
 }
