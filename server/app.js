@@ -4,14 +4,17 @@ var app = express()
 //var router = express.Router()
 
 var bodyParser = require('body-parser')
-var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var FileStore = require('session-file-store')(session);
 //app.use(express.static('../'))
 
 app.use(express.static('../'))
 
+
 app.use(cookieParser('sessiontest'));
+
+app.use(bodyParser.urlencoded({ extended: false }))
+
 app.use(session({
     secret: 'sessiontest',//与cookieParser中的一致
     resave: true,
