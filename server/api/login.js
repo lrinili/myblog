@@ -1,53 +1,57 @@
-
 var express = require('express');
-var router  = express.Router();
+var router = express.Router();
 var querystring = require('querystring');
 var mongoose = require('mongoose')
-// router.use('/',function(req,res,next){
-//   console.log( Date.now())
-//   next()
-// })
- require('../db/user.js')
-// var userEntity = new User()
-// userEntity.save()
+var jwt = require('jsonwebtoken')
+require('../db/user.js')
 var user = mongoose.model('User')
+var createToken = require('../middle/createToken.js')
+router.post('/login', function(req, res) {
+  
+    var name = req.body.name
+    console.log('req', req.body)
+    user.findOne({ 'name': name }, function(err, person) {
+        if (err) return
+        console.log('person',person)
 
-router.post('/login',function(req,res){
+        if (person) {
+            if (person.password !== req.body.password) {
+                res.send(200, {
+                    result: false,
+                    data: null,
+                    msg: '密码错误'
+                })
+            } else {
+                if (req.session.userName) {
 
-      var name = req.body.name
-      // 检查 session 中的 isVisit 字段
-      // 如果存在则增加一次，否则为 session 设置 isVisit 字段，并初始化为 1。
+                    console.log('第N次了', req.session.userName)
+                } else {
+                    req.session.userName = person;
+                    console.log('第1次了')
+                }
 
 
-     user.findOne({'name':name},{'password':1},function(err,person){
-      //如果err==null，则person就能取到数据
-         if(err) return
 
 
-     if(person){
-       if(person.password!==req.body.password){
-          res.send(200,{
-            result:false,
-            data:null,
-            msg:'密码错误'
-          })
-       }else{
 
-           req.session.name = person.password;
-           console.log(req.session)
 
-         res.send(200,{
-           result:true,
-           data:person,
-           msg:''
-         })
-       }
+                var token = createToken(person)
+                res.send(200, {
+                        result: true,
+                        data: person,
+                        token: token,
+                        msg: ''
+                    })
+                    // var decoded = jwt.verify(token, '121');
+                    //  console.log('decoded',decoded)
 
-     }else{
-     	res.send(200,'用户未注册')
-     }
+
+            }
+        } else {
+            res.send(200, '用户未注册')
+        }
 
     });
 
 })
-module.exports=router
+module.exports = router
