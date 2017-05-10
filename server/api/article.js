@@ -10,7 +10,7 @@ router.get('/index',function(req,res){
 
 
    console.log('article',req.session)
-
+   res.send(req.session.userName)
       // 检查 session 中的 isVisit 字段
       // 如果存在则增加一次，否则为 session 设置 isVisit 字段，并初始化为 1。
 
