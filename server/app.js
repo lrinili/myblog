@@ -9,10 +9,10 @@ app.use(express.static('../'))
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-app.use(session({
-  secret: 'recommand 128 bytes random string', // 建议使用 128 个字符的随机字符串
-  cookie: { maxAge: 60 * 1000 * 30}
-}));
+// app.use(session({
+//   secret: 'recommand 128 bytes random string', // 建议使用 128 个字符的随机字符串
+//   cookie: { maxAge: 60 * 1000 * 30}
+// }));
 
 app.all("*",(req,res,next)=>{
   res.header("Access-Control-Allow-Origin", "*");
