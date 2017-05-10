@@ -27,6 +27,9 @@
 </template>
   <script type="text/javascript">
     export default{
+      created(){
+        sessionStorage.clear()
+      },
       data(){
         return {
           myForm:{
@@ -51,9 +54,9 @@
           vm.$refs.myForm.validate((valid)=>{
             if(valid){
               vm.$store.dispatch('login',vm.myForm).then((resp)=>{
-                 console.log(resp)
-
+                
               if(resp.data.result){
+                 sessionStorage.setItem("user", JSON.stringify(resp.data.data)); 
                     this.$router.push({path:'index'});
               }else{
                 vm.$message({

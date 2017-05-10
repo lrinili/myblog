@@ -9,6 +9,7 @@ import { mapState,mapActions } from 'vuex'
    export default {
      created(){
        let vm = this
+             console.info('tokeninfo', JSON.parse(sessionStorage.getItem("user")).token)
        vm.$store.dispatch('getIndex')
 
      },

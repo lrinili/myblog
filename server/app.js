@@ -17,12 +17,11 @@ app.use(cookieParser('sessiontest'));
 
 app.use(bodyParser.urlencoded({ extended: false }))
 
-app.use(session({
-    secret: 'sessiontest',//与cookieParser中的一致
-    resave: true,
-    saveUninitialized:true,
+// app.use(session({
+//   secret: 'recommand 128 bytes random string', // 建议使用 128 个字符的随机字符串
+//   cookie: { maxAge: 60 * 1000 * 30}
+// }));
     name:'lly'
-}));
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
@@ -39,6 +38,9 @@ app.all("*",(req,res,next)=>{
 });
 
 var routers = require('./routers/index.js')
+  //console.log('当前文件夹',process.pwd())
+  res.sendFile('../index.html')
+})
   routers(app)
 app.listen(3009,function(){
   console.log('listening on port 3009')
