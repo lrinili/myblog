@@ -2,17 +2,27 @@
 var express = require('express')
 var app = express()
 //var router = express.Router()
-var routers = require('./routers/index.js')
+
 var bodyParser = require('body-parser')
 var session = require('express-session');
+var FileStore = require('session-file-store')(session);
+//app.use(express.static('../'))
+
 app.use(express.static('../'))
 
+
+app.use(cookieParser('sessiontest'));
+
 app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
+
 // app.use(session({
 //   secret: 'recommand 128 bytes random string', // 建议使用 128 个字符的随机字符串
 //   cookie: { maxAge: 60 * 1000 * 30}
 // }));
+    name:'lly'
+
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
 app.all("*",(req,res,next)=>{
   res.header("Access-Control-Allow-Origin", "*");
@@ -21,7 +31,7 @@ app.all("*",(req,res,next)=>{
   next();
 });
 
-app.get('/',function(req,res){
+var routers = require('./routers/index.js')
   //console.log('当前文件夹',process.pwd())
   res.sendFile('../index.html')
 })
