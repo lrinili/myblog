@@ -39,8 +39,7 @@ app.all("*",(req,res,next)=>{
 
 var routers = require('./routers/index.js')
   //console.log('当前文件夹',process.pwd())
-  res.sendFile('../index.html')
-})
+  
   routers(app)
 app.listen(3009,function(){
   console.log('listening on port 3009')

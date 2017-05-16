@@ -9,11 +9,29 @@ var createToken = require('../middle/createToken.js')
 router.post('/login', function(req, res) {
 
     var name = req.body.name
-    console.log('req', req.body)
-<<<<<<< HEAD
-    user.findOne({ 'name': name }, function(err, person) {
-        if (err) return
-        console.log('person',person)
+    // console.log('req', req.body)
+
+    // user.getUser(name, function(err, data) {
+    //         console.log(data)
+    //         res.send(200, {
+    //             result: true,
+    //             data: data,
+    //             msg: '密码错误'
+    //         })
+    //     })
+        // var UserEntity =  new user({name})
+        // UserEntity.getUser(function(err,data){
+        //     if(err) return
+        //         console.log('查询到的结果', data)
+        //                     res.send(200, {
+        //                     result: false,
+        //                     data: data,
+        //                     msg: '密码错误'
+        //                 })
+        // })
+        user.findOne({ 'name': name }, function(err, person) {
+            if (err) return
+            console.log('person',person)
 
         if (person) {
             if (person.password !== req.body.password) {
@@ -23,24 +41,17 @@ router.post('/login', function(req, res) {
                     msg: '密码错误'
                 })
             } else {
-                if (req.session.userName) {
+                // if (req.session.userName) {
 
-                    console.log('第N次了', req.session.userName)
-                } else {
-                    req.session.userName = person;
-                    console.log('第1次了')
-                }
-
-
-
-
-
-
+                //     console.log('第N次了', req.session.userName)
+                // } else {
+                //     req.session.userName = person;
+                //     console.log('第1次了')
+                // }
                 var token = createToken(person)
                 res.send(200, {
                         result: true,
-                        data: person,
-                        token: token,
+                        data: {person,token},
                         msg: ''
                     })
                     // var decoded = jwt.verify(token, '121');
@@ -53,77 +64,11 @@ router.post('/login', function(req, res) {
         }
 
     });
-=======
-    user.getUser(name, function(err, data) {
-            console.log(data)
-            res.send(200, {
-                result: false,
-                data: data,
-                msg: '密码错误'
-            })
-        })
-        // var UserEntity =  new user({name})
-        // UserEntity.getUser(function(err,data){
-        //     if(err) return
-        //         console.log('查询到的结果', data)
-        //                     res.send(200, {
-        //                     result: false,
-        //                     data: data,
-        //                     msg: '密码错误'
-        //                 })
-        // })
-        // user.findOne({ 'name': name }, function(err, person) {
-        //     if (err) return
-        //     console.log('person',person)
-
-    //     if (person) {
-    //         if (person.password !== req.body.password) {
-    //             res.send(200, {
-    //                 result: false,
-    //                 data: null,
-    //                 msg: '密码错误'
-    //             })
-    //         } else {
-    //             // if (req.session.userName) {
-
-    //             //     console.log('第N次了', req.session.userName)
-    //             // } else {
-    //             //     req.session.userName = person;
-    //             //     console.log('第1次了')
-    //             // }
-    //             var token = createToken(person)
-    //             res.send(200, {
-    //                     result: true,
-    //                     data: {person,token},
-    //                     msg: ''
-    //                 })
-    //                 // var decoded = jwt.verify(token, '121');
-    //                 //  console.log('decoded',decoded)
-
-
-    //         }
-    //     } else {
-    //         res.send(200, '用户未注册')
-    //     }
-
-    // });
   
 
 
 
 
-router.get('/index',function(req,res){
-
-   console.log('article',req.session)
-             res.send(200,{
-            result:false,
-            data:null,
-            msg:'密码错误'
-          })
-      // 检查 session 中的 isVisit 字段
-      // 如果存在则增加一次，否则为 session 设置 isVisit 字段，并初始化为 1。
-
->>>>>>> 42e819f438049833327ed08795ad2e66cf5a07d4
 
 })
 module.exports = router
