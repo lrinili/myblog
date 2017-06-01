@@ -36,7 +36,6 @@ app.all("*",(req,res,next)=>{
   next();
 });
 
-app.get('/',function(req,res){
   //console.log('当前文件夹',process.pwd())
   
   routers(app)
