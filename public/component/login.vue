@@ -56,7 +56,7 @@
               vm.$store.dispatch('login',vm.myForm).then((resp)=>{
                 
               if(resp.data.result){
-                 sessionStorage.setItem("user", JSON.stringify(resp.data.data)); 
+                
                     this.$router.push({path:'index'});
               }else{
                 vm.$message({
