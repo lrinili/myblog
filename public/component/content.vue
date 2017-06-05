@@ -22,7 +22,6 @@ import MyRadio from './radio.vue'
     },
      created(){
        let vm = this
-             console.info('tokeninfo', JSON.parse(sessionStorage.getItem("user")).token)
        vm.$store.dispatch('getIndex')
 
      },
@@ -42,7 +41,6 @@ import MyRadio from './radio.vue'
           
           showNameToal(data,e){
             this.count="111"
-            console.log('1111',data)
           }
          }
      }

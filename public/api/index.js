@@ -14,7 +14,6 @@ instance.interceptors.request.use(function(config) {
 
        if(sessionStorage.getItem('user')){
             var tokens = JSON.parse(sessionStorage.getItem('user')).token
-            console.log(1111)
           	 config.headers.Authorization = "Bearer "+tokens
           }
          

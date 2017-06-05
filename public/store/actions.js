@@ -18,7 +18,6 @@ export default {
             // })
 
             return api.login(obj).then((resp) => {
-                console.log('success', resp.data.data.token)
                 sessionStorage.setItem("user", JSON.stringify(resp.data.data)); //存token在sessionStorage，或者cookie   Cookies.set('user',resp.data.data)
                 return Promise.resolve(resp)
             }).then((data) => {
@@ -32,7 +31,6 @@ export default {
             return api.getIndex()
         },
         saveToken({ commit, state }, payload) {
-            console.log('payload', payload)
             commit('SAVE_TOKEN', payload)
         }
 }
